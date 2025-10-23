@@ -1,0 +1,42 @@
+{% extends 'calificaciones/landing_base.html' %}
+
+{% block title %}Promedio General{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h2 class="hero-title">Promedio General</h2>
+    <p class="hero-description">Promedio de todas las calificaciones registradas: <strong>{{ promedio_general }}</strong></p>
+</section>
+
+<section class="features">
+    <div class="feature-card">
+        <h3>Total estudiantes</h3>
+        <p>{{ total_estudiantes }}</p>
+    </div>
+    <div class="feature-card">
+        <h3>Total registros</h3>
+        <p>{{ total_registros }}</p>
+    </div>
+</section>
+
+<section class="features">
+    <div style="width:100%">
+        <h3>Promedio por estudiante</h3>
+        <table class="tabla">
+            <thead><tr><th>Estudiante</th><th>ID</th><th>Promedio</th></tr></thead>
+            <tbody>
+            {% for e in estudiantes_promedio %}
+                <tr>
+                    <td>{{ e.nombre_estudiante }}</td>
+                    <td>{{ e.identificacion }}</td>
+                    <td>{{ e.promedio_estudiante|floatformat:2 }}</td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="3">No hay registros</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock %}

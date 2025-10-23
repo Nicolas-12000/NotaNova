@@ -1,0 +1,16 @@
+{% extends 'calificaciones/landing_base.html' %}
+
+{% block title %}Promedio General - NotaNova{% endblock %}
+
+{% block content %}
+<div class="card">
+	<div class="card-header">
+		<h2 class="card-title">📊 Promedio General</h2>
+	</div>
+
+	<div style="padding:1.5rem;">
+		<p style="color:#ffffff;">El promedio general es: <strong style="color:#FFD700;">{{ promedio|floatformat:2 }}</strong></p>
+		<a href="{% url 'calificaciones:listar_calificaciones' %}" class="btn btn-secondary">Volver</a>
+	</div>
+</div>
+{% endblock %}

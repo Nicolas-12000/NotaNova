@@ -1,0 +1,20 @@
+{% extends 'calificaciones/landing_base.html' %}
+
+{% block title %}Eliminar{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h2 class="hero-title">Eliminar calificación</h2>
+</section>
+
+<section class="features">
+    <div class="feature-card">
+        <p>¿Seguro que quieres eliminar la calificación de <strong>{{ calificacion.nombre_estudiante }}</strong> para <strong>{{ calificacion.asignatura }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="cta-button">Eliminar</button>
+            <a href="{% url 'calificaciones:listar_calificaciones' %}" class="btn">Cancelar</a>
+        </form>
+    </div>
+</section>
+{% endblock %}

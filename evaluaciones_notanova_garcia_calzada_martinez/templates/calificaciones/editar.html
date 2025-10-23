@@ -1,0 +1,20 @@
+{% extends 'calificaciones/landing_base.html' %}
+
+{% block title %}Editar Calificación{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h2 class="hero-title">Editar calificación</h2>
+</section>
+
+<section class="features">
+    <div class="feature-card">
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="cta-button">Actualizar</button>
+            <a href="{% url 'calificaciones:listar_calificaciones' %}" class="btn">Volver</a>
+        </form>
+    </div>
+</section>
+{% endblock %}
