@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Expose the app both at /calificaciones/ and at root
+    # Mount the app at /calificaciones/ with namespace
     path('calificaciones/', include(('calificaciones_app_garcia_calzada_martinez.urls', 'calificaciones'), namespace='calificaciones')),
-    path('', include(('calificaciones_app_garcia_calzada_martinez.urls', 'calificaciones'), namespace='calificaciones')),
+    # Redirect root to the calificaciones list view to avoid duplicate namespace include
+    path('', RedirectView.as_view(pattern_name='calificaciones:listar_calificaciones', permanent=False)),
 ]

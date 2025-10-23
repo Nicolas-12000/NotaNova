@@ -116,8 +116,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-# Serve static files from project-level `static/` during development
+STATIC_URL = '/static/'
+# Serve static files from the project's `static/` directory during development
+# BASE_DIR points to the inner project folder; keep static/ inside it so Django
+# can find it via STATICFILES_DIRS (or via app directories)
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
